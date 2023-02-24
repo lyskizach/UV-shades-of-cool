@@ -21,14 +21,13 @@ $(document).ready(function () {
 
   var currentDay = $("#currentDay");
   var today = dayjs().format('dddd, MMMM D YYYY, h:mm:ss a');
-  currentDay.text(today);
-
+  
   var saveBtn = $("#saveBtn");
-
+  /*
   var past = $("#past");
   var present = $("#present");
   var future = $("#future");
-
+  */
   var hour9 = $("#hour-9");
   var hour10 = $("#hour-10");
   var hour11 = $("#hour-11");
@@ -36,41 +35,54 @@ $(document).ready(function () {
   var textInput9 = $("#textInput9");
   var textInput10 = $("#textInput10");
   var textInput11 = $("#textInput11");
+  
+  var saved9 = localStorage.getItem("saved9");
+  var saved10 = localStorage.getItem("saved10");
+  var saved11 = localStorage.getItem("saved11");
 
   var value = "";
   var time = "";
-  var today = "";
 
-  function Display() {
-    today = "";
+// load display
+  display();
+  function display() {
+    textInput9.text(saved9);
+    textInput10.text(saved10);
+    textInput11.text(saved11);
+    // toggle the background colors based upon past/present/future
+    $(currentDay.text(today));
+
   }
-  
-
+  // upon click event, saves local storage data
   $('.saveBtn').on('click', function() {
     time = $(this).parent().attr("id");
     value = $(this).siblings('.description').val();
-
-    //console.log(value);
-    //console.log(time);
-   
-    setInput();
     
-  });
+    console.log(value);
+    console.log(time);
+    
   
- function setInput() {
-  if(time = hour9) {
-    localStorage.setItem("list9", value)
-    //console.log(localStorage.getItem("list9"));
+  if(time === "hour-9") {
+    localStorage.setItem("saved9", value);
+    console.log(saved9);
+    display();
+  } else
+  if(time === "hour-10") {
+    localStorage.setItem("saved10", value);
+    console.log(saved10);
+    display();
+  } else
+  if(time === "hour-11") {
+    localStorage.setItem("saved11", value);
+    console.log(saved11);
+    display();
   }
-  if(time = hour10) {
-    localStorage.setItem("list10", value);
-    //console.log(localStorage.getItem("list10"));
-  }
-  if(time = hour11) {
-    localStorage.setItem("list11", value);
-    //console.log(localStorage.getItem("list11"));
-  }
-  }
+  });
+  //clearData();
+  //function clearData() {
+   // localStorage.clear();
+ // }
+
 });
 
 
