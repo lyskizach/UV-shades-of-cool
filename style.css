@@ -63,7 +63,7 @@ textarea {
   justify-content: center;
 }
 
-.reset-btn {
+.resetBtn {
   margin: 25px 0px 25px 0px;
   width: 250px;
   height: 100px;
@@ -71,7 +71,7 @@ textarea {
   background-color: #8A2BE2;
 }
 
-.reset-btn:hover {
+.resetBtn:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
   opacity: 75%;

@@ -22,7 +22,8 @@ $(document).ready(function () {
   var currentDay = $("#currentDay");
   var today = dayjs().format('dddd, MMMM D YYYY, h:mm:ss a');
   
-  var saveBtn = $("#saveBtn");
+  //var saveBtn = $("#saveBtn");
+  //var resetBtn = $(".resetBtn");
   /*
   var past = $("#past");
   var present = $("#present");
@@ -43,16 +44,22 @@ $(document).ready(function () {
   var value = "";
   var time = "";
 
-// load display
+  $("#resetBtn").on("click", function() {
+    $(localStorage.clear());
+    location.reload();
+  })
+ 
+
   display();
+// load display
   function display() {
-    textInput9.text(saved9);
-    textInput10.text(saved10);
-    textInput11.text(saved11);
+    $(textInput9.text(saved9));
+    $(textInput10.text(saved10));
+    $(textInput11.text(saved11));
     // toggle the background colors based upon past/present/future
     $(currentDay.text(today));
+  };
 
-  }
   // upon click event, saves local storage data
   $('.saveBtn').on('click', function() {
     time = $(this).parent().attr("id");
@@ -63,23 +70,21 @@ $(document).ready(function () {
     
   
   if(time === "hour-9") {
-    localStorage.setItem("saved9", value);
-    console.log(saved9);
+    localStorage.setItem("saved9", JSON.stringify(value));
+    //console.log(saved9);
   } else
   if(time === "hour-10") {
-    localStorage.setItem("saved10", value);
-    console.log(saved10);
+    localStorage.setItem("saved10", JSON.stringify(value));
+    //console.log(saved10);
   } else
   if(time === "hour-11") {
-    localStorage.setItem("saved11", value);
-    console.log(saved11);
+    localStorage.setItem("saved11", JSON.stringify(value));
+    //console.log(saved11);
   }
   display();
   });
-  //clearData();
-  //function clearData() {
-   // localStorage.clear();
- // }
+
+  
 
 });
 
