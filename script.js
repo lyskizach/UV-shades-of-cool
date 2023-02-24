@@ -1,6 +1,3 @@
-// console.log($("#main").children());
-
-
 $(document).ready(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -22,7 +19,10 @@ $(document).ready(function () {
   // TODO: Add code to display the current date in the header of the page.
   
 
-  var currentDay = document.getElementById("currentDay");
+  var currentDay = $("#currentDay");
+  var today = dayjs().format('dddd, MMMM D YYYY, h:mm:ss a');
+  currentDay.text(today);
+
   var saveBtn = $("#saveBtn");
 
   var past = $("#past");
@@ -39,47 +39,45 @@ $(document).ready(function () {
 
   var value = "";
   var time = "";
+  var today = "";
+
+  function Display() {
+    today = "";
+  }
   
 
   $('.saveBtn').on('click', function() {
-    value = $(this).siblings('.description').val();
     time = $(this).parent().attr("id");
+    value = $(this).siblings('.description').val();
 
-    console.log(value);
-    console.log(time);
- 
+    //console.log(value);
+    //console.log(time);
+   
     setInput();
-   }
- )
-
- function setInput(event) {
+    
+  });
+  
+ function setInput() {
   if(time = hour9) {
-    localStorage.setItem("list9", value.val);
+    localStorage.setItem("list9", value)
+    //console.log(localStorage.getItem("list9"));
   }
   if(time = hour10) {
-    localStorage.setItem("list10", value.val);
+    localStorage.setItem("list10", value);
+    //console.log(localStorage.getItem("list10"));
   }
   if(time = hour11) {
-    localStorage.setItem("list11", value.val);
+    localStorage.setItem("list11", value);
+    //console.log(localStorage.getItem("list11"));
   }
-
   }
 });
 
 
-
-  //console.log
-  
-
-  // const hours = [hour9, hour10, hour11];
-
-  //$("#main").children(1).eq(0).addClass("past");
-
-  /*function currentDayDisplay() {
-
+ /*if(!$(value).val()) {
+    alert("hi");
+    return false;
+  } else($(value).val()) {
+    return true;
   }
-  */
-
-  
-
-  // saveBtn onlclick event (save the input data)
+*/
