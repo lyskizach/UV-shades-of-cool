@@ -25,13 +25,6 @@ $(document).ready(function () {
   var currentDay = document.getElementById("currentDay");
   var saveBtn = $("#saveBtn");
 
-  const saveBtns = [
-    {btn9: document.getElementById("saveBtn9")},
-    {btn10: document.getElementById("saveBtn10")},
-    {btn11: document.getElementById("saveBtn11")}
-];
-
-
   var past = $("#past");
   var present = $("#present");
   var future = $("#future");
@@ -39,7 +32,6 @@ $(document).ready(function () {
   var hour9 = $("#hour-9");
   var hour10 = $("#hour-10");
   var hour11 = $("#hour-11");
-
 
   var textInput9 = $("#textInput9");
   var textInput10 = $("#textInput10");
@@ -66,19 +58,13 @@ $(document).ready(function () {
 
 
   // saveBtn onlclick event (save the input data)
-  saveBtn.on("click", function(event) {
-    if(event.target = saveBtns[0]) {
-      console.log("hello9!")
-      localStorage.setItem("hour9", textInput9.val);
-    }
-    if(event.target = saveBtns[1]) {
-      console.log("hello10!")
-      localStorage.setItem("hour10", textInput10.val)
-    }
-    if(event.target = saveBtns[2]) {
-      localStorage.setItem("hour11", textInput11.val)
-      console.log("hello11!");
-    } return;
+  $('.saveBtn').on('click', function() {
+   var value = $(this).siblings('.description').val();
+   var time = $(this).parent().attr("id");
+   console.log(value);
+   console.log(time);
+
+   setInput();
   }
 )
 });
