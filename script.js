@@ -37,7 +37,36 @@ $(document).ready(function () {
   var textInput10 = $("#textInput10");
   var textInput11 = $("#textInput11");
 
-  console.log($("#hour-9"));
+  var value = "";
+  var time = "";
+  
+
+  $('.saveBtn').on('click', function() {
+    value = $(this).siblings('.description').val();
+    time = $(this).parent().attr("id");
+
+    console.log(value);
+    console.log(time);
+ 
+    setInput();
+   }
+ )
+
+ function setInput(event) {
+  if(time = hour9) {
+    localStorage.setItem("list9", value.val);
+  }
+  if(time = hour10) {
+    localStorage.setItem("list10", value.val);
+  }
+  if(time = hour11) {
+    localStorage.setItem("list11", value.val);
+  }
+
+  }
+});
+
+
 
   //console.log
   
@@ -46,25 +75,11 @@ $(document).ready(function () {
 
   //$("#main").children(1).eq(0).addClass("past");
 
-  function currentDayDisplay() {
+  /*function currentDayDisplay() {
 
   }
+  */
 
-  function setInput(event) {
-    textInput9.text(localStorage.getItem("hour9"));
-    textInput10.text(localStorage.getItem("hour10"));
-    textInput11.text(localStorage.getItem("hour11"));
-  }
-
+  
 
   // saveBtn onlclick event (save the input data)
-  $('.saveBtn').on('click', function() {
-   var value = $(this).siblings('.description').val();
-   var time = $(this).parent().attr("id");
-   console.log(value);
-   console.log(time);
-
-   setInput();
-  }
-)
-});
