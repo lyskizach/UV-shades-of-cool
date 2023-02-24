@@ -1,7 +1,7 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-$(function () {
+// console.log($("#main").children());
+
+
+$(document).ready(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -20,4 +20,65 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
+  
+
+  var currentDay = document.getElementById("currentDay");
+  var saveBtn = $("#saveBtn");
+
+  const saveBtns = [
+    {btn9: document.getElementById("saveBtn9")},
+    {btn10: document.getElementById("saveBtn10")},
+    {btn11: document.getElementById("saveBtn11")}
+];
+
+
+  var past = $("#past");
+  var present = $("#present");
+  var future = $("#future");
+
+  var hour9 = $("#hour-9");
+  var hour10 = $("#hour-10");
+  var hour11 = $("#hour-11");
+
+
+  var textInput9 = $("#textInput9");
+  var textInput10 = $("#textInput10");
+  var textInput11 = $("#textInput11");
+
+  console.log($("#hour-9"));
+
+  //console.log
+  
+
+  // const hours = [hour9, hour10, hour11];
+
+  //$("#main").children(1).eq(0).addClass("past");
+
+  function currentDayDisplay() {
+
+  }
+
+  function setInput(event) {
+    textInput9.text(localStorage.getItem("hour9"));
+    textInput10.text(localStorage.getItem("hour10"));
+    textInput11.text(localStorage.getItem("hour11"));
+  }
+
+
+  // saveBtn onlclick event (save the input data)
+  saveBtn.on("click", function(event) {
+    if(event.target = saveBtns[0]) {
+      console.log("hello9!")
+      localStorage.setItem("hour9", textInput9.val);
+    }
+    if(event.target = saveBtns[1]) {
+      console.log("hello10!")
+      localStorage.setItem("hour10", textInput10.val)
+    }
+    if(event.target = saveBtns[2]) {
+      localStorage.setItem("hour11", textInput11.val)
+      console.log("hello11!");
+    } return;
+  }
+)
 });
