@@ -53,10 +53,30 @@ textarea {
   color: white;
 }
 
-.saveBtn i:hover {
+.saveBtn:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+.reset-box {
+  display: flex;
+  justify-content: center;
+}
+
+.reset-btn {
+  margin: 25px 0px 25px 0px;
+  width: 250px;
+  height: 100px;
+  max-width: 75%;
+  background-color: #8A2BE2;
+}
+
+.reset-btn:hover {
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+  opacity: 75%;
+}
+
 
 .time-block:hover {
   opacity: 75%;

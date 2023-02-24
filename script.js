@@ -65,18 +65,16 @@ $(document).ready(function () {
   if(time === "hour-9") {
     localStorage.setItem("saved9", value);
     console.log(saved9);
-    display();
   } else
   if(time === "hour-10") {
     localStorage.setItem("saved10", value);
     console.log(saved10);
-    display();
   } else
   if(time === "hour-11") {
     localStorage.setItem("saved11", value);
     console.log(saved11);
-    display();
   }
+  display();
   });
   //clearData();
   //function clearData() {
