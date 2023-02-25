@@ -1,6 +1,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
+  color: #000000;
 }
 
 textarea {
@@ -69,13 +70,14 @@ textarea {
   width: 250px;
   height: 100px;
   max-width: 75%;
-  background-color: #8A2BE2;
+  background-color: #b47be8;
 }
 
 .resetBtn:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
   opacity: 75%;
+  background-color: #8613f2;
 }
 
 
