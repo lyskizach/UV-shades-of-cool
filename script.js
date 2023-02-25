@@ -26,8 +26,6 @@ $(document).ready(function () {
   var value = "";
   var time = "";
 
-  display();
-
   $("#resetBtn").on("click", function() {
     $(localStorage.clear());
     location.reload();
@@ -39,6 +37,7 @@ $(document).ready(function () {
 
   }, 1000);
 
+  display();
   function display() {
     $(textInput9.text(saved9));
     $(textInput10.text(saved10));
@@ -95,13 +94,13 @@ $(document).ready(function () {
   // make storage data on separate element to display and clear input field each click
 
   $('.saveBtn').on('click', function() {
+    time = $(this).parent().attr("id");
+    value = $(this).siblings('.description').val();
     if(!value) {
       alert("You must type something")
       return;
-    }
-    time = $(this).parent().attr("id");
-    value = $(this).siblings('.description').val();
-
+    } else
+    
   if(time === "hour-9") {
     localStorage.setItem("saved9", JSON.stringify(value));
     //console.log(saved9);
@@ -114,7 +113,7 @@ $(document).ready(function () {
     localStorage.setItem("saved11", JSON.stringify(value));
     //console.log(saved11);
   }
-  location.reload();
+  display();
   });
 
 });
