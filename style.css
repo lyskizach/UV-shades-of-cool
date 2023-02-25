@@ -31,7 +31,7 @@ textarea {
 }
 
 .past {
-  background-color: #d3d3d3;
+  background-color: #d3d3d37f;
   color: white;
 }
 
@@ -64,6 +64,7 @@ textarea {
 }
 
 .resetBtn {
+  border-radius: 10px;
   margin: 25px 0px 25px 0px;
   width: 250px;
   height: 100px;

@@ -1,11 +1,4 @@
 $(document).ready(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -15,20 +8,9 @@ $(document).ready(function () {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
   
-
   var currentDay = $("#currentDay");
-  var today = dayjs().format('dddd, MMMM D YYYY, h:mm:ss a');
-  
-  //var saveBtn = $("#saveBtn");
-  //var resetBtn = $(".resetBtn");
-  /*
-  var past = $("#past");
-  var present = $("#present");
-  var future = $("#future");
-  */
+
   var hour9 = $("#hour-9");
   var hour10 = $("#hour-10");
   var hour11 = $("#hour-11");
@@ -44,31 +26,82 @@ $(document).ready(function () {
   var value = "";
   var time = "";
 
+  display();
+
   $("#resetBtn").on("click", function() {
     $(localStorage.clear());
     location.reload();
-  })
- 
+  });
 
-  display();
-// load display
+  setInterval(function() {
+    time = dayjs().format('dddd, MMMM D YYYY, HH:mm:ss');
+    $(currentDay.text(time));
+
+  }, 1000);
+
   function display() {
     $(textInput9.text(saved9));
     $(textInput10.text(saved10));
     $(textInput11.text(saved11));
-    // toggle the background colors based upon past/present/future
-    $(currentDay.text(today));
+    
+    var currentHour = dayjs().hour();
+    //console.log(currentHour);
+    if(currentHour === 9){
+      $(hour9).addClass("present");
+      $(hour9).removeClass("past");
+    }
+    if(currentHour < 9){
+      $(hour9).removeClass("past");
+      $(hour9).removeClass("present");
+      $(hour9).addClass("future");
+    }
+    if(currentHour > 9) {
+      $(hour9).addClass("past");
+      $(hour9).removeClass("present");
+      $(hour9).removeClass("future");
+    }
+    if(currentHour === 10){
+      $(hour10).addClass("present");
+      $(hour10).removeClass("past");
+      $(hour10).removeClass("future");
+    }
+    if(currentHour < 10){
+      $(hour10).removeClass("past");
+      $(hour10).removeClass("present");
+      $(hour10).addClass("future");
+    }
+    if(currentHour > 10) {
+      $(hour10).addClass("past");
+      $(hour10).removeClass("present");
+      $(hour10).removeClass("future");
+    }
+    if(currentHour === 11){
+      $(hour11).removeClass("past");
+      $(hour11).addClass("present");
+      $(hour11).removeClass("future");
+    }
+    if(currentHour < 11){
+      $(hour11).addClass("future");
+      $(hour11).removeClass("past");
+      $(hour11).removeClass("present");
+    }
+    if(currentHour > 11) {
+      $(hour11).addClass("past");
+      $(hour11).removeClass("present");
+      $(hour11).removeClass("future");
+    }
   };
+// location.reload();
+  // make storage data on separate element to display and clear input field each click
 
-  // upon click event, saves local storage data
   $('.saveBtn').on('click', function() {
+    if(!value) {
+      alert("You must type something")
+      return;
+    }
     time = $(this).parent().attr("id");
     value = $(this).siblings('.description').val();
-    
-    console.log(value);
-    console.log(time);
-    
-  
+
   if(time === "hour-9") {
     localStorage.setItem("saved9", JSON.stringify(value));
     //console.log(saved9);
@@ -81,18 +114,7 @@ $(document).ready(function () {
     localStorage.setItem("saved11", JSON.stringify(value));
     //console.log(saved11);
   }
-  display();
+  location.reload();
   });
 
-  
-
 });
-
-
- /*if(!$(value).val()) {
-    alert("hi");
-    return false;
-  } else($(value).val()) {
-    return true;
-  }
-*/
