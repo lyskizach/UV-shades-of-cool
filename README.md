@@ -5,4 +5,4 @@ In this challenge, I modified the starter code to create a fully functional work
 ## Screenshot of Deployed Link
 "![alt text](screenshot1.png "Screenshot of deployed link")"
 ## URL
-https://lyskizach.github.io/UV-shades-of-cool/screensh
+https://lyskizach.github.io/UV-shades-of-cool/
