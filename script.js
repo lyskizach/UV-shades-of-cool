@@ -1,26 +1,61 @@
 $(document).ready(function () {
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  
+
   var currentDay = $("#currentDay");
   var value = "";
   var time = "";
 
-  let savedData = [];
+  displayData();
+  colorCode();
+
+  function displayData() {
+      $("#hour-9").children(".description").text(localStorage.getItem("value9"));
+      $("#hour-10").children(".description").text(localStorage.getItem("value10"));
+      $("#hour-11").children(".description").text(localStorage.getItem("value11"));
+      $("#hour-12").children(".description").text(localStorage.getItem("value12"));
+      $("#hour-13").children(".description").text(localStorage.getItem("value13"));
+      $("#hour-14").children(".description").text(localStorage.getItem("value14"));
+      $("#hour-15").children(".description").text(localStorage.getItem("value15"));
+      $("#hour-16").children(".description").text(localStorage.getItem("value16"));
+      $("#hour-17").children(".description").text(localStorage.getItem("value17"));
+  };
 
   $('.saveBtn').on('click', function() {
-    let data = {
-      time: $(this).parent().attr("id"),
-      value: $(this).siblings('.description').val(),
+    time = parseInt($(this).parent().attr("id").split("hour-")[1]);
+    value = $(this).siblings('.description').val();
+
+    if(time === 9) {
+      localStorage.setItem("value9", value);
     }
-    savedData.push(data);
-    localStorage.setItem("savedData", JSON.stringify(savedData));
+    if(time === 10) {
+      localStorage.setItem("value10", value);
+    }
+    if(time === 11) {
+      localStorage.setItem("value11", value);
+    }
+    if(time === 12) {
+      localStorage.setItem("value12", value);
+    }
+    if(time === 13) {
+      localStorage.setItem("value13", value);
+    }
+    if(time === 14) {
+      localStorage.setItem("value14", value);
+    }
+    if(time === 15) {
+      localStorage.setItem("value15", value);
+    }
+    if(time === 16) {
+      localStorage.setItem("value16", value);
+    }
+    if(time === 17) {
+      localStorage.setItem("value17", value);
+    };
+    
+    displayData();
   });
-
-
+ 
   $("#resetBtn").on("click", function() {
-    $(localStorage.clear());
+    localStorage.clear();
     location.reload();
   });
 
@@ -29,23 +64,16 @@ $(document).ready(function () {
     $(currentDay.text(time));
   }, 1000);
 
-  function displayData() {
-    for(var i=9; i <17; i++) {
-      //localStorage.getItem(time, value);
-    }
-  };
-
   function colorCode() {
-
       var currentTime = dayjs().hour();
   
       $(".time-block").each(function() {
-          var selectedTime = parseInt($(this).attr("id").split("hour")[1]);
+          var selectedTime = parseInt($(this).attr("id").split("hour-")[1]);
   
           if (selectedTime < currentTime) {
               $(this).addClass("past");
           }
-          else if (selectedTimee === currentTime) {
+          else if (selectedTime === currentTime) {
               $(this).removeClass("past");
               $(this).addClass("present");
           }
@@ -56,7 +84,5 @@ $(document).ready(function () {
           }
       })
     };
-    displayData();
-    colorCode();
 
 });
