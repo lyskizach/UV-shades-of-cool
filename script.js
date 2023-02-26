@@ -52,6 +52,7 @@ $(document).ready(function () {
     };
     
     displayData();
+    colorCode();
   });
  
   $("#resetBtn").on("click", function() {
